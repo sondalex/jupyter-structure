@@ -5,9 +5,6 @@ from nbconvert.preprocessors import ExecutePreprocessor
 
 def cli() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Execute Notebooks")
-
-    # Add the arguments
-    # add_argument method automatically detects "--..."
     parser.add_argument('--save', dest='save',type=int, action="store",
                            required=False, help="Bool indicating whether to save the executed notebooks (overrides existing notebook)", default=0)
     return parser
