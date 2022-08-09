@@ -1,3 +1,4 @@
+import sys
 import argparse
 
 import nbformat
@@ -9,7 +10,7 @@ def cli() -> argparse.ArgumentParser:
                            required=False, help="Bool indicating whether to save the executed notebooks (overrides existing notebook)", default=0)
     return parser
 
-def main(save:bool=False):
+def run(save:bool=False):
 
     app1_notebook = "app1/app1_notebook.ipynb"
     app2_notebook = "app2/app2_notebook.ipynb"
@@ -36,11 +37,14 @@ def main(save:bool=False):
         with open(app2_notebook, 'w', encoding="utf-8") as f:
             nbformat.write(nb2, f)
 
-if __name__ == '__main__':
+def main():
     parser = cli()
     args = parser.parse_args()
     
     SAVE = bool(args.save)
     
-    main(SAVE)
+    run(SAVE)
+            
+if __name__ == '__main__':
+    sys.exit(main)
     
